@@ -8,6 +8,7 @@ import {
 import Link from 'next/link';
 import {usePathname} from "next/navigation";
 import clsx from "clsx";
+import React from "react";
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
@@ -26,7 +27,7 @@ export default function NavLinks() {
 
     return (
         <>
-            {links.map((link: { name: string, href: string, icon: string }) => {
+            {links.map((link: { name: string, href: string, icon: React.ForwardRefExoticComponent }) => {
                 const LinkIcon = link.icon;
                 return (
                     <Link
