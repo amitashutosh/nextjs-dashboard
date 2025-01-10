@@ -4,7 +4,7 @@ import {z} from 'zod';
 import {sql} from '@vercel/postgres';
 import {revalidatePath} from 'next/cache';
 import {redirect} from 'next/navigation';
-import { signIn } from '@/auth';
+import {signIn} from '@/auth';
 import {AuthError} from 'next-auth';
 
 const FormSchema = z.object({
@@ -112,13 +112,17 @@ export async function updateInvoice(
 
 export async function deleteInvoice(id: string) {
     // throw new Error('Failed to Delete Invoice.');
-    try {
-        await sql`DELETE
-                  FROM invoices
-                  WHERE id = ${id}`;
-    } catch (error) {
-        return {message: 'Database Error: Failed to Delete Invoice.', error};
-    }
+    await sql`DELETE
+              FROM invoices
+              WHERE id = ${id}`;
+
+    // try {
+    //     await sql`DELETE
+    //               FROM invoices
+    //               WHERE id = ${id}`;
+    // } catch (error) {
+    //     return {message: 'Database Error: Failed to Delete Invoice.', error};
+    // }
     revalidatePath('/dashboard/invoices');
 }
 
