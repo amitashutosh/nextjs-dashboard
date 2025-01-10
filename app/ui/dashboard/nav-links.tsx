@@ -27,7 +27,11 @@ export default function NavLinks() {
 
     return (
         <>
-            {links.map((link: { name: string, href: string, icon: React.ForwardRefExoticComponent }) => {
+            {links.map((link: {
+                name: string,
+                href: string,
+                icon: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>>>
+            }) => {
                 const LinkIcon = link.icon;
                 return (
                     <Link
