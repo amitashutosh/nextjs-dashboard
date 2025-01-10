@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  UserGroupIcon,
-  HomeIcon,
-  DocumentDuplicateIcon,
+    UserGroupIcon,
+    HomeIcon,
+    DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import {usePathname} from "next/navigation";
@@ -26,7 +26,7 @@ export default function NavLinks() {
 
     return (
         <>
-            {links.map((link: any) => {
+            {links.map((link: { name: string, href: string, icon: string }) => {
                 const LinkIcon = link.icon;
                 return (
                     <Link
